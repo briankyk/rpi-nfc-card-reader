@@ -1,0 +1,73 @@
+<To Be Recorded Separately - Python Dev Config>
+flake8
+bandit
+
+disable format of save
+
+====================================================================================================================================================================================
+
+Google Sheet API  --> steps :
+Go to "console.ckoud.google.com
+Library -> Google Drive API -> Create Credentials -> download service account JSON * do not miss this, cannot recover otherwise / if lost -> go to service account -> add key
+Library -> Google Sheet API -> enable
+Create Google sheet -> add sheet to service account
+pip install gspread oauth2client
+python library : import gspread, from oauth2client.service_account import ServiceAccountCredentials
+scope =["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+
+google sheet python:
+row = sheet.row_values(3)  # Get a specific row
+col = sheet.col_values(3)  # Get a specific column
+cell = sheet.cell(1, 2).value  # Get the value of a specific cell
+insertRow = ["hello", 5, "red", "blue"]
+sheet.add_rows(insertRow, 4)  # Insert the list as a row at index 4
+sheet.update_cell(2, 2, "CHANGED")  # Update one cell
+sheet.row_count
+
+python -m serial.tools.miniterm --> listen to serial port on pi / Ctrl + ] exit
+https://opensource.com/article/20/5/usb-port-raspberry-pi-python
+
+http://www.davesmotleyprojects.com/raspi/raspi-data-logger/raspi-data-logger.html
+
+card reader path = /dev/hidraw0
+
+https://stackoverflow.com/questions/38038129/python-read-from-a-usb-hid-device
+
+/opt/vc/bin/vcgencmd get_throttled --> check rpi voltage
+
+dmesg
+
+
+python function:
+
+open(file, mode )
+file	The path and name of the file
+mode	A string, define which mode you want to open the file in:
+"r" - Read - Default value. Opens a file for reading, error if the file does not exist
+
+"a" - Append - Opens a file for appending, creates the file if it does not exist
+
+"w" - Write - Opens a file for writing, creates the file if it does not exist
+
+"x" - Create - Creates the specified file, returns an error if the file exist
+
+In addition you can specify if the file should be handled as binary or text mode
+
+"t" - Text - Default value. Text mode
+
+"b" - Binary - Binary mode (e.g. images)
+
+
+https://stackoverflow.com/questions/19732978/how-can-i-get-a-string-from-hid-device-in-python-with-evdev
+evdev -> 24 events per scan
+
+#obtain the device event id / hidraw in this case 
+>>> import evdev
+
+>>> devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+>>> for device in devices:
+>>>     print(device.path, device.name, device.phys)
+/dev/input/event1    Dell Dell USB Keyboard   usb-0000:00:12.1-2/input0
+/dev/input/event0    Dell USB Optical Mouse   usb-0000:00:12.0-2/input0
+
+
