@@ -6,4 +6,5 @@ This application is built for logging readings from ACR PICC card readers to goo
 To use this application, install the python dependancies with:  
 `pip3 install -r requirements.txt`  
   
-Get the input device with `get_dev_info.py`  
+Get the input device with  
+`get_dev_info.py`  
